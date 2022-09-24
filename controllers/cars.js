@@ -36,11 +36,11 @@ module.exports.findCar = async(req, res) => {
 };
 module.exports.search = async(req, res) => {
     let data = await Car.find({
-        "$or": [{
-            name: { $regex: req.params.key },
-            model: { $regex: req.params.key },
-            description: { $regex: req.params.key }
-        }]
+        "$or": [
+            { name: { $regex: req.params.key } },
+            { model: { $regex: req.params.key } },
+            { description: { $regex: req.params.key } }
+        ]
     })
     res.send(data)
 }
