@@ -34,6 +34,14 @@ module.exports.findCar = async(req, res) => {
     // console.log(test)
     // res.send(test)
 };
+module.exports.search = async(req, res) => {
+    let data = await Car.find({
+        "$or": [
+            { name: { $regex: req.params.key } }
+        ]
+    })
+    res.send(data)
+}
 
 module.exports.updateCar = async(req, res) => {
     const { id } = req.params;
